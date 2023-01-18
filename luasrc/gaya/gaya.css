@@ -289,12 +289,14 @@ small {
     transition-duration: 100ms;
     position: absolute;
     background: white;
+    box-shadow: 0 0 10px 0 #0000000f;
     transform: translateY(50%);
     bottom: 50%;
-    right: calc(100%);
+    right: calc(100% + 10px);
     width: 32px;
     height: 32px;
-    padding: 5px;
+    padding: 8px;
+    border-radius: 100%;
     content: "";
     box-sizing: border-box;
     cursor: pointer;
