@@ -60,11 +60,17 @@
 <body class="lang_<%=luci.i18n.context.lang%> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> <% if not (path == "") then %>node-<%= path %><% else %>node-main-login<% end %>" data-page="<%= pcdata(path) %>">
 <header>
 	<div class="navbar">
+		<div class="dropdown">
+			
   <a href="/cgi-bin/luci/admin/services/ttyd"><img src="<%=media%>/images/terminal.png" /></a>
   <a href="/cgi-bin/luci/admin/services/openclash"><img src="<%=media%>/images/oc.png" /></a>
   <a href="/cgi-bin/luci/admin/nas/tinyfm"><img src="<%=media%>/images/file.png" /></a>
   <a href="/cgi-bin/luci/admin/status/vnstat2"><img src="<%=media%>/images/vnstat.png" /></a>
   <a href="/cgi-bin/luci/admin/status/about"><img src="<%=media%>/images/about.png" /></a>
+			</div>
+        <label class="toggler">
+			<img src="<%=media%>/gaya/icons/arrow.svg" alt="">
+		</label>
 </div>
 <script>
 	{
