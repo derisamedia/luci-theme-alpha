@@ -1100,9 +1100,16 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .td.cbi-section-actions {
   text-align: right !important;
   vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .td.cbi-section-actions > * {
   display: inline-flex;
+}
+.td.cbi-section-actions > button {
+  display: block;
 }
 .td.cbi-section-actions > * > *,
 .td.cbi-section-actions > * > form > * {
@@ -1308,9 +1315,11 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   width: auto;
 }
 .cbi-progressbar {
+  border-radius: 15px;
+  overflow: hidden;
   position: relative;
   min-width: 170px;
-  height: 20px;
+  height: 30px;
   border: thin solid #999;
   background: #eee;
   margin: 6px 0;
@@ -1323,14 +1332,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 .cbi-progressbar::after {
   font-family: monospace;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 700;
   font-size-adjust: 0.38;
   line-height: normal;
   position: absolute;
-  top: 2px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
-  bottom: 2px;
   left: 0;
   overflow: hidden;
   content: attr(title);

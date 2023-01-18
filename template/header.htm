@@ -59,7 +59,7 @@
 </head>
 <body class="lang_<%=luci.i18n.context.lang%> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> <% if not (path == "") then %>node-<%= path %><% else %>node-main-login<% end %>" data-page="<%= pcdata(path) %>">
 <header>
-	<div class="navbar">
+	<div class="navbar active">
 		<div class="dropdown">
 			
   <a href="/cgi-bin/luci/admin/services/ttyd"><img src="<%=media%>/images/terminal.png" /></a>
