@@ -52,9 +52,6 @@
   text-align: center !important;
   background: inherit;
 }
-.td[width="33%"] {
-  padding: 1.1em;
-}
 .table[width="33%"],
 .th[width="33%"],
 .td[width="33%"] {
@@ -214,10 +211,21 @@ header > .fill > .container {
   padding: 0.5rem 1rem 0;
 }
 header > .fill > .container > #logo {
-  margin: 0 3.5rem 0 1.5rem;
+  padding: 0;
+  margin: 0 !important;
+  position: absolute; 
+  left: 0;
+  top: 50%;
+  height: 100%;
+  transform: translateY(-50%);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: calc(16rem);
 }
 header > .fill > .container > #logo > img {
-  width: calc(0% + 10rem);
+  width: auto;
+  height: 100%;
   margin-top: -0.1rem;
 }
 header > .fill > .container > .brand {
@@ -361,7 +369,7 @@ small {
     float: left;
     text-align: center;
     padding: 8px 0;
-    width: 20%;
+		width: calc(100% / 6);
     text-decoration: none;
     max-width: 100px;
   }
@@ -437,9 +445,9 @@ small {
 .main > .main-left {
   position: fixed;
   top: 3.5rem;
+  width: calc(0% + 16rem);
   float: left;
   overflow-x: auto;
-  width: calc(0% + 16rem);
   height: calc(100% - 4rem);
   background-color: var(--menu-bg-color);
   transition: visibility 400ms, width 400ms;
@@ -2165,12 +2173,12 @@ div > .table > .tr:nth-of-type(2n),
     margin-top: 0;
   }
   header > .fill > .container > #logo {
-    margin: 0 2.5rem 0 0.5rem;
+    width: calc(13rem);
   }
-  .main-left {
+  .main > .main-left{
     width: calc(0% + 13rem);
   }
-  .main-right {
+  .main > .main-right {
     width: calc(100% - 13rem);
   }
   .btn:not(button),
@@ -2219,12 +2227,12 @@ div > .table > .tr:nth-of-type(2n),
     top: 3.5rem;
     height: calc(100% - 3.5rem);
   }
-  .main-left {
+  .main > .main-left {
     top: 3.5rem;
     width: calc(0% + 13rem);
     height: calc(100% - 3.5rem);
   }
-  .main-right {
+  .main > .main-right {
     width: calc(100% - 13rem);
   }
   .tabs > li > a,
@@ -2288,12 +2296,12 @@ div > .table > .tr:nth-of-type(2n),
   .main > .loading > span {
     top: 25%;
   }
-  .main-left {
+  .main > .main-left {
     position: fixed;
     z-index: 100;
     visibility: hidden;
   }
-  .main-right {
+  .main > .main-right {
     width: 100%;
   }
   .showSide {
@@ -2449,6 +2457,19 @@ div > .table > .tr:nth-of-type(2n),
   }
 }
 @media screen and (max-width: 600px) {
+  header > .fill > .container > #logo {
+    padding: 1rem;
+    margin: 0;
+    position: absolute; 
+    left: 50%;
+    top:0;
+    width: 100px;
+    transform: translateX(-50%);
+  }
+  header > .fill > .container > #logo > img{
+    width: 100%;
+    margin-top:0;
+  }
   .cbi-progressbar::after {
     font-size: 0.95em;
     line-height: 1.5;

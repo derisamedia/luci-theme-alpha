@@ -45,6 +45,7 @@
 <meta name="application-name" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
 <meta name="apple-mobile-web-app-title" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
 <link rel="stylesheet" href="<%=media%>/gaya/gaya.css">
+<link rel="stylesheet" href="<%=media%>/gaya/gaya.dark.css">
 <link rel="shortcut icon" href="<%=media%>/favicon.ico">
 <% if node and node.css then %>
 <link rel="stylesheet" href="<%=resource%>/<%=node.css%>">
@@ -67,6 +68,7 @@
   <a href="/cgi-bin/luci/admin/nas/tinyfm"><img src="<%=media%>/images/file.png" /></a>
   <a href="/cgi-bin/luci/admin/status/vnstat2"><img src="<%=media%>/images/vnstat.png" /></a>
   <a href="/cgi-bin/luci/admin/status/about"><img src="<%=media%>/images/about.png" /></a>
+  <a href="javascript:void(0)" class="themetoggler"><img src="<%=media%>/images/reload.png" /></a>
 			</div>
         <label class="toggler">
 			<img src="<%=media%>/gaya/icons/arrow.svg" alt="">
