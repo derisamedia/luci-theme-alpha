@@ -716,7 +716,7 @@ fieldset > fieldset,
   width: 100%;
   padding-bottom: 1rem;
   color: #404040;
-  border-bottom: thin solid #eee;
+  border-bottom: thin solid #eeeeee00;
   margin: 0 0 0.5rem;
 }
 .cbi-section > h4:first-child,
@@ -1806,7 +1806,7 @@ input[name="nslookup"] {
   display: inline-block;
   margin-top: 2rem !important;
   text-align: left;
-  background-color: #fff;
+  background-color: #2e2b2b00;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   padding: 1rem 3.5rem 2rem;
 }
@@ -2306,7 +2306,7 @@ div > .table > .tr:nth-of-type(2n),
   }
   .showSide {
     position: relative;
-    top: 0.18rem;
+    top: 0rem;
     display: inline-flex;
     align-items: center;
     height: 100%;

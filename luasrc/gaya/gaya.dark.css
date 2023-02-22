@@ -690,7 +690,7 @@ body.dark {
 .dark h2 {
 	font-size: 1.8rem;
 	padding-bottom: 10px;
-	border-bottom: thin solid #eee;
+	border-bottom: thin solid #eeeeee00;
 	margin: 2rem 0 0;
 }
 
@@ -772,7 +772,7 @@ body.dark {
 	display: block;
 	width: 100%;
 	padding-bottom: 1rem;
-	color: #ffffff;
+	color: #2e6da4;
 	margin: 0 0 0.5rem;
 }
 
@@ -1080,9 +1080,9 @@ body.dark {
 }
 
 .dark .cbi-tabmenu {
-	border: thin solid #d4d4d4;
+	border: thin solid #202020;
 	border-bottom: 0;
-	background-color: #d4d4d4;
+	background-color: #202020;
 }
 
 .dark .cbi-tabmenu > li:hover {
@@ -1090,7 +1090,7 @@ body.dark {
 }
 
 .dark .cbi-tabmenu > li[class~="cbi-tab"] {
-	background-color: #fff;
+	background-color: #3c3c3c;
 }
 
 .dark [data-tab-title] {
@@ -1678,7 +1678,7 @@ body.dark {
 .dark td > .ifacebadge,
   .dark .td > .ifacebadge {
 	font-size: 0.8rem;
-	background-color: #202020;
+	background-color: #ffffff;
 }
 
 .dark .ifacebadge > em,
@@ -1712,7 +1712,7 @@ body.dark {
 	align-items: center;
 	flex: 1 1 auto;
 	min-width: 220px;
-	background-color: #333333;
+	background-color: #ffffff;
 	margin: 0.5em 0.25em 0;
 	padding: 0.5em;
 }
@@ -1821,7 +1821,7 @@ body.dark {
 	flex-direction: column;
 	min-width: 100px;
 	border-bottom: thin solid #ccc;
-	background-color: #f9f9f9;
+	background-color: #424242;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -2627,7 +2627,7 @@ body.dark {
 
 	.dark .showSide {
 		position: relative;
-		top: 0.18rem;
+		top: 0rem;
 		display: inline-flex;
 		align-items: center;
 		height: 100%;
