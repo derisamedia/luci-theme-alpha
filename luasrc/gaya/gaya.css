@@ -1,4 +1,9 @@
 /* Base */
+@font-face {
+  font-family: "Inter";
+  src: url('/luci-static/alpha/fonts/Inter-Regular.woff2');
+}
+
 :root {
   --main-color: #09c;
   --header-bg: rgb(255, 255, 255);
@@ -10,8 +15,7 @@
   --main-menu-color: #202124;
   --submenu-bg-hover: #d4d4d4;
   --submenu-bg-hover-active: #09c;
-  --font-body: "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif,
-    "Helvetica Neue", Helvetica, "Hiragino Sans GB";
+  --font-body: 'Inter';
 }
 .table {
   position: relative;
@@ -116,7 +120,7 @@ html {
 }
 body {
   font-size: 0.8rem;
-  background-color: rgb(54 70 67 / 0.05);
+  background-color: rgb(237 237 237);
 }
 html,
 body {
@@ -197,7 +201,6 @@ header {
   float: left;
   height: 4rem;
   transition: box-shadow 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   color: var(--header-color);
   background: var(--header-bg);
 }
@@ -348,18 +351,25 @@ small {
 
 @media screen and (max-width: 720px) {
   .navbar {
+    
     overflow: hidden;
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 5px;
+    top: auto;
+    left: 10px;
+    right: auto;
+    width: 95%;
+    align: center;
     transition: transform 0.5s;
     border-top: var(--navBorder);
     text-align: center;
     height: calc(50px + constant(safe-area-inset-bottom));
     height: calc(50px + env(safe-area-inset-bottom));
-    background-color: #ffff;
+    background-color: #000000c5;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    border-radius: 10px;
+    
   }
   .navbar--hidden {
     transform: translateY(50px);
@@ -642,7 +652,6 @@ h1 {
 h2 {
   font-size: 1.8rem;
   padding-bottom: 10px;
-  border-bottom: thin solid #eee;
   margin: 2rem 0 0;
 }
 h3 {
@@ -679,9 +688,9 @@ h5 {
   border: 0;
   border-radius: 0;
   background-color: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: 1rem 0 0;
   padding: 2rem;
+  border-radius: 10px;
 }
 .cbi-modal .cbi-section,
 .cbi-section .cbi-section {
@@ -734,7 +743,9 @@ table,
 .table {
   overflow-y: hidden;
   width: 100%;
+  background-color: #fff;
   box-shadow: 0 0 0 1px rgb(255, 255, 255);
+  border-radius: 10px;
 }
 .container > .cbi-section:first-of-type > .table[width="100%"] > .tr > .td {
   padding: 0.6rem;
@@ -750,7 +761,7 @@ tr > th,
 .tr > .th,
 .cbi-section-table-row::before,
 #cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
-  border-top: thin solid rgb(255, 255, 255);
+  border-top: thin solid rgba(255, 255, 255, 0);
 }
 .table[width="100%"] > .tr:first-child > .td {
   margin: auto 0;
@@ -758,7 +769,6 @@ tr > th,
 .cbi-section-table-row {
   margin-bottom: 1rem;
   text-align: center !important;
-  background: #f4f4f4;
 }
 .cbi-section-table-row:last-child {
   margin-bottom: 0;
@@ -796,7 +806,6 @@ td > table > tbody > tr > td,
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
   border: 0;
-  border-radius: 0.2rem;
   background-color: #f0f0f0;
   background-image: none;
   -webkit-appearance: none;
@@ -876,7 +885,6 @@ td > table > tbody > tr > td,
 .cbi-button[name="restart"],
 .cbi-button[onclick="hide_empty(this)"] {
   font-weight: 700;
-  border: thin solid #bfbfbf;
   background-color: #d4d4d4;
 }
 .btn.primary,
@@ -907,7 +915,7 @@ td > table > tbody > tr > td,
 .cbi-button[onclick="addKey(event)"] {
   font-weight: 400;
   color: #fff;
-  background-color: #5bdede;
+  background-color: #07dbf7;
 }
 .btn.danger,
 .cbi-section-remove > .cbi-button,
@@ -986,15 +994,15 @@ td > table > tbody > tr > td,
   color: var(--main-color);
 }
 .cbi-tabmenu {
-  border: thin solid #d4d4d4;
   border-bottom: 0;
   background-color: #d4d4d4;
+  border-radius: 10px;
 }
 .cbi-tabmenu > li:hover {
   background-color: #f1f1f1;
 }
 .cbi-tabmenu > li[class~="cbi-tab"] {
-  background-color: #fff;
+  background-color: #bbe9ff;
 }
 [data-tab-title] {
   overflow: hidden;
@@ -1012,7 +1020,6 @@ td > table > tbody > tr > td,
 }
 .cbi-section-node-tabbed {
   margin-top: 0;
-  border: thin solid #d4d4d4;
   border-top: 0;
   padding: 0;
 }
@@ -1238,7 +1245,6 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   font-weight: 700;
   display: none;
   color: #777;
-  text-shadow: 1px 1px 0 #fff;
 }
 .cbi-dropdown > ul > li {
   display: none;
@@ -1328,7 +1334,6 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   position: relative;
   min-width: 170px;
   height: 30px;
-  border: thin solid #999;
   background: #eee;
   margin: 6px 0;
 }
@@ -1377,7 +1382,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   min-width: 270px;
   max-width: 600px;
   min-height: 32px;
-  border-radius: 3px !important;
+  border-radius: 10px !important;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: 5em auto;
@@ -1620,10 +1625,7 @@ td > .ifacebadge,
   display: inline-flex;
   flex-direction: column;
   min-width: 100px;
-  border-bottom: thin solid #ccc;
   background-color: #f9f9f9;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .ifacebox-head {
   background: #eee;
@@ -1845,7 +1847,6 @@ input[name="nslookup"] {
   margin-bottom: 0.2rem;
 }
 [data-page="admin-system-opkg"] div.btn {
-  line-height: 3;
   display: inline;
   padding: 0.3rem 0.6rem;
 }
@@ -1990,7 +1991,7 @@ input[name="nslookup"] {
   width: 100%;
 }
 .cbi-rowstyle-2 {
-  background-color: rgb(255, 255, 255);
+  background-color: ;
 }
 .pull-right,
 .node-main-login > .main form > div:last-child {
@@ -2004,7 +2005,6 @@ input[name="nslookup"] {
 .label,
 [data-indicator] {
   background-color: #bfbfbf;
-  border-radius: 3px;
   color: #fff !important;
   font-size: 0.8rem;
   font-weight: 700;
@@ -2017,7 +2017,7 @@ input[name="nslookup"] {
 #modemenu > li > a.active,
 .notice,
 [data-indicator]:not([data-style="inactive"]) {
-  background-color: #5bc0de !important;
+  background-color: #23b8cc !important;
 }
 #xhr_poll_status,
 .cbi-value-field > ul > li {
@@ -2043,6 +2043,7 @@ input[name="nslookup"] {
 .main > .main-left > .nav > li.active,
 .main > .main-left > .nav > .slide > .slide-menu > .active {
   background-color: var(--submenu-bg-hover-active);
+  border-radius: 10px;
 }
 .main > .main-left > .nav > .slide > ul,
 .main > .main-left[style*="overflow: hidden"] > .nav > .slide > .menu::before,
@@ -2072,6 +2073,7 @@ input[name="nslookup"] {
 .main > .main-left > .nav > .slide > .menu:hover,
 .main > .main-left > .nav > .slide > .slide-menu > li:hover {
   background: var(--submenu-bg-hover);
+  border-radius: 10px;
 }
 table > tbody > tr > td,
 table > tbody > tr > th,
@@ -2116,7 +2118,7 @@ div > .table > .tr:nth-of-type(2n),
 .cbi-section[id] .cbi-section-node:nth-of-type(4n + 4),
 .cbi-tabcontainer > .cbi-value:nth-of-type(2n),
 .cbi-rowstyle-1 {
-  background-color: #ffffff;
+
 }
 .cbi-dropdown > ul > li .hide-open,
 .cbi-dropdown[open] > ul.dropdown > li .hide-close {
@@ -2305,7 +2307,8 @@ div > .table > .tr:nth-of-type(2n),
     width: 100%;
   }
   .showSide {
-    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0rem;
     display: inline-flex;
     align-items: center;
@@ -2396,7 +2399,6 @@ div > .table > .tr:nth-of-type(2n),
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   }
   .td.cbi-value-field,
   .cbi-section-table-cell {
