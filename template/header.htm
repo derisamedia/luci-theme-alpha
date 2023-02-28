@@ -92,13 +92,14 @@
 	</script>
 	<div class="fill">
 		<div class="container">
-          <div class="showSide">
-			<img src="<%=media%>/gaya/icons/menu_icon.svg" alt="">
-		  </div>
+          
 		<a id="logo" href="<% if luci.dispatcher.context.authsession then %><%=url('admin/status/overview')%><% else %>#<% end %>">
 			<img src="<%=media%>/brand.png" alt="OpenWrt">
 		</a>
 		<div class="status" id="indicators"></div>
+		<div class="showSide">
+			<img src="<%=media%>/gaya/icons/menu_icon.svg" alt="">
+		  </div>
 		</div>
 	</div>
 </header>
