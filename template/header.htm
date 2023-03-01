@@ -52,6 +52,7 @@
 <% end -%>
 <script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=git-21.295.66888-fc702bc"></script>
 <script src="<%=resource%>/cbi.js?v=git-21.295.66888-fc702bc"></script>
+<script src="/www/luci-static/alpha/icons/feather.min.js"></script>
 <title><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %> - LuCI</title>
 <% if css then %><style title="text/css">
 <%= css %>
