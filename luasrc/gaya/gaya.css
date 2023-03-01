@@ -46,6 +46,14 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
+
+b {
+  color: #5a8dee;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: "Quicksand-Bold";
+  
+}
 ::-webkit-scrollbar:hover {
   background-color: rgba(100, 100, 100, 0.09);
 }
@@ -577,11 +585,11 @@ li {
     top: 0.1rem;
     left: 0.05rem;
     display: inline-block;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin-right: 1rem;
-    animation: anim-rotate 2s infinite linear;
-    background: url(./icons/spinner.svg) no-repeat center;
+    animation: anim-rotate 2s infinite cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    background: url(./icons/spinner.png) no-repeat center;
   }
   
   .cbi-map {
@@ -755,7 +763,7 @@ strong {
     background-color: #ff7d60 !important;
   }
   .warning {
-    background-color: #f0e68c !important;
+    background-color: #64b0ff !important;
   }
   .success {
     background-color: #5cb85c !important;
@@ -768,9 +776,8 @@ strong {
     font-weight: 700;
     margin-bottom: 1em;
     border: 0;
-    border-radius: 0 !important;
+    border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
     text-shadow: 1px 1px rgba(173, 31, 31, 0.1);
     padding: 1rem;
   }
