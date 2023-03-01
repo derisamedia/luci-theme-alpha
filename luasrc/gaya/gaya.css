@@ -25,7 +25,119 @@
     src: url('/luci-static/alpha/fonts/Quicksand-Bold.ttf');
   }
   
-  
+  @font-face {
+  font-family: argon;
+  src: url('/luci-static/alpha/fonts/argon.woff');
+
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: argon !important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: #5a8dee;
+  text-decoration: none;
+  background-color: transparent;
+}
+::-webkit-scrollbar:hover {
+  background-color: rgba(100, 100, 100, 0.09);
+}
+::-webkit-scrollbar-thumb:vertical {
+  background: rgba(100, 100, 100, 0.5);
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(100, 100, 100, 0.61);
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar {
+  width: 0.5em !important;
+  overflow: visible;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+}
+::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 4px;
+  background: rgba(100, 100, 100, 0.2);
+}
+.icon-hello-world:before {
+  content: "\e90e";
+}
+.icon-expand_more:before {
+  content: "\e20b";
+}
+.icon-menu:before {
+  content: "\e20e";
+}
+.icon-favorite:before {
+  content: "\e291";
+}
+.icon-spinner:before {
+  content: "\e603";
+}
+.icon-delete:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e901";
+}
+.icon-use:before {
+  content: "\e902";
+}
+.icon-loading:before {
+  content: "\e903";
+}
+.icon-switch:before {
+  content: "\e904";
+}
+.icon-error:before {
+  content: "\e905";
+}
+.icon-dashboard:before {
+  content: "\e906";
+}
+.icon-logout:before {
+  content: "\e907";
+}
+.icon-Network:before {
+  content: "\e908";
+}
+.icon-services:before {
+  content: "\e909";
+}
+.icon-system:before {
+  content: "\e90a";
+}
+.icon-vpn:before {
+  content: "\e90b";
+}
+.icon-storage:before {
+  content: "\e90c";
+}
+.icon-statistics:before {
+  content: "\e90d";
+}
+.icon-angle-right:before {
+  content: "\e90f";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-question:before {
+  content: "\f059";
+}
   
   :root {
     --main-color: #09c;
@@ -51,13 +163,13 @@
 
 li {
   display: block;
-  color: #7e7e7e;
   list-style-type: disc;
   margin-block-start: 5px;
   margin-block-end: 5px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
 
   .table {
     position: relative;
@@ -555,11 +667,64 @@ strong {
     width: 16px;
     height: 16px;
     content: "";
-    background: url(./icons/arrow.svg) no-repeat;
+    background: url(./icons/home.png) no-repeat;
   }
   .main > .main-left > .nav > .slide > .menu.active::before {
-    transform: rotate(-180deg);
   }
+
+    .main > .main-left > .nav > .slide > [data-title="Status"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/browser.png) no-repeat;
+}
+
+    .main > .main-left > .nav > .slide > [data-title="System"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/settings.png) no-repeat;
+}
+
+    .main > .main-left > .nav > .slide > [data-title="Services"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/settings-sliders.png) no-repeat;
+}
+
+    .main > .main-left > .nav > .slide > [data-title="NAS"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/folder.png) no-repeat;
+}
+
+    .main > .main-left > .nav > .slide > [data-title="Modem"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/filter.png) no-repeat;
+}
+
+    .main > .main-left > .nav > .slide > [data-title="Network"]:before {
+    position: absolute;
+    right: 14px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background: url(./ikon-sidebar/globe.png) no-repeat;
+}
   /* End Sidebar */
   
   .modemenu-buttons {
@@ -632,9 +797,9 @@ strong {
     top:50%;
     transform: translateY(-50%);
     left: 14px;
-    width: 24px;
-    height: 24px;
-    content: url(./icons/logout.svg);
+    width: 16px;
+    height: 16px;
+    content: url(./ikon-sidebar/exit.png);
   }
   .main > .main-left > .nav > .slide:hover {
     background: none;
@@ -1056,6 +1221,8 @@ strong {
   }
   .cbi-tabmenu > li:hover {
     background-color: #f1f1f1;
+    border-radius: 10px;
+
     
   }
   .cbi-tabmenu > li[class~="cbi-tab"] {
@@ -2557,6 +2724,7 @@ strong {
     .main > .main-left > .nav > li > [data-title="Logout"] {
       font-size: 1.1rem;
     }
+
     .cbi-value-title {
       display: block;
       min-width: 0 !important;
@@ -2653,7 +2821,7 @@ strong {
     .main > .main-left > .nav > .slide > .slide-menu > li > a,
     .tr[data-title]::before,
     .tr.cbi-section-table-titles.named::before {
-      font-size: 1rem;
+      font-size: 
     }
     .cbi-value-title,
     .cbi-value-description,
