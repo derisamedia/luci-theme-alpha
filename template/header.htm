@@ -62,15 +62,25 @@
 <header>
 	<div class="navbar active">
 		<div class="dropdown">
-			
-	<a href="/cgi-bin/luci/admin/status/overview"><img src="<%=media%>/images/house-blank.png" /></a>
- <a href="/cgi-bin/luci/admin/services/ttyd"><img src="<%=media%>/images/terminal.png" /></a>
-  <a href="/cgi-bin/luci/admin/services/openclash"><img src="<%=media%>/images/oc.png" /></a>
-  <a href="/cgi-bin/luci/admin/nas/tinyfm"><img src="<%=media%>/images/file.png" /></a>
-  <a href="/cgi-bin/luci/admin/modem/main"><img src="<%=media%>/images/chart.png" /></a>
-  <a href="/cgi-bin/luci/admin/network/network"><img src="<%=media%>/images/interfaces.png" /></a>
-
-			</div>
+			<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/status/overview')%><% else %>#<% end %>">
+			    <img src="<%=media%>/images/house-blank.png" />
+    		</a>
+    		<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/services/ttyd')%><% else %>#<% end %>">
+    		    <img src="<%=media%>/images/terminal.png" />
+    		</a>
+    		<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/services/openclash')%><% else %>#<% end %>">
+    		    <img src="<%=media%>/images/oc.png" />
+    		</a>
+    		<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/nas/tinyfm')%><% else %>#<% end %>">
+    		    <img src="<%=media%>/images/file.png" />
+    		</a>
+    		<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/modem/main')%><% else %>#<% end %>">
+    		    <img src="<%=media%>/images/chart.png" />
+    		</a>
+    		<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/network/network')%><% else %>#<% end %>">
+    		    <img src="<%=media%>/images/interfaces.png" />
+    		</a>
+		</div>
         <label class="toggler">
 			<img src="<%=media%>/gaya/icons/arrow.svg" alt="">
 		</label>
@@ -98,9 +108,9 @@
 			<img src="<%=media%>/brand.png" alt="OpenWrt">
 		</a>
 		<div class="status" id="indicators"></div>
-		<div class="logout" >  
-			<a href="/cgi-bin/luci/admin/logout" data-title="Logout">Logout</a>
-			</div>
+		<div class="logout" >
+			<a href="<% if luci.dispatcher.context.authsession then %><%=url('admin/logout')%><% else %>#<% end %>" data-title="Logout">Logout</a>
+		</div>
 		<div class="showSide">
 			<img src="<%=media%>/gaya/icons/menu_icon.svg" alt="">
 		  </div>

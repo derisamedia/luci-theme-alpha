@@ -39,7 +39,7 @@
     <script type="text/javascript">
         L = new LuCI({"apply_rollback":90,"resource":"\/luci-static\/resources","media":"\/luci-static\/material","documentroot":"\/www","pollinterval":5,"apply_display":1.5,"requestpath":[],"ubuspath":"\/ubus\/","scriptname":"\/cgi-bin\/luci","dispatchpath":[],"apply_timeout":5,"apply_holdoff":4,"nodespec":{"satisfied":true,"action":{"type":"template","path":"admin_status\/index"},"order":1,"depends":{"acl":["luci-mod-status-index"]},"title":"Overview"}});
     </script>
-<form method="post" action="/cgi-bin/luci"><div class="cbi-map"></div>
+<form method="post" action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>"><div class="cbi-map"></div>
 <div class='box'>
     <div class='box-form'>
       <div class='box-login-tab'></div>
