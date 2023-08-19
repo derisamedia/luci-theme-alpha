@@ -2,9 +2,11 @@
 Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and material luCi theme,inspired on neobird LEDE theme
 <summary>Preview Screenshoot</summary>
 <p>
+  
 ![image](https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/ss1.png)
   
 ![image](https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/ss2.png)
+
 </p>
 
 ###FYI
