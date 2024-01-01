@@ -20,10 +20,42 @@
 
 <% local ver = require "luci.version" %>
 	</div>
+	
 	<footer class="mobile">
 	<a href="https://github.com/derisamedia/luci-theme-alpha"><%= ver.luciname %> | <%= ver.luciversion %> | Alpha OS Theme v3.8</a>
 	</footer>
 	</div>
+	<div class="navbar active">
+		<div class="dropdown">
+			
+	<a href="/cgi-bin/luci/admin/status/overview"><img src="<%=media%>/gaya/icon/navbar/status.png" /></a>
+ <a href="/cgi-bin/luci/admin/services/ttyd"><img src="<%=media%>/gaya/icon/navbar/terminal.png" /></a>
+  <a href="/cgi-bin/luci/admin/services/openclash"><img src="<%=media%>/gaya/icon/navbar/oc.png" /></a>
+  <a href="/cgi-bin/luci/admin/nas/tinyfm"><img src="<%=media%>/gaya/icon/navbar/nas.png" /></a>
+  <a href="/cgi-bin/luci/admin/modem/main"><img src="<%=media%>/gaya/icon/navbar/modem.png" /></a>
+  <a href="/cgi-bin/luci/admin/network/network"><img src="<%=media%>/gaya/icon/navbar/interface.png" /></a>
+
+			</div>
+        <label class="toggler">
+			<img src="<%=media%>/gaya/icon/arrow.svg" alt="">
+		</label>
+</div>
+<script>
+	{
+  const nav = document.querySelector(".navbar");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    if (lastScrollY < window.scrollY) {
+      nav.classList.add("navbar--hidden");
+    } else {
+      nav.classList.remove("navbar--hidden");
+    }
+
+    lastScrollY = window.scrollY;
+  });
+}
+	</script>
 </div>
 
 <script type="text/javascript">L.require('menu-alpha')</script>

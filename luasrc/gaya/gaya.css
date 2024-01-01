@@ -394,6 +394,8 @@ label {
     transition: box-shadow 0.2s;
     color: var(--header-color);
     background: #2222359a;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
   
   header > .fill > .container {
