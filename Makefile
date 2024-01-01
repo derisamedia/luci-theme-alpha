@@ -1,5 +1,5 @@
 # LuCI Alpha Theme
-# Copyright 2022 derisamedia <yuimizuno86@gmail.com>
+# Copyright 2024 derisamedia <yuimizuno86@gmail.com>
 #
 # Licensed under the Apache License v2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -10,7 +10,7 @@ THEME_NAME:=alpha
 THEME_TITLE:=Alpha
 
 PKG_NAME:=luci-theme-$(THEME_NAME)
-PKG_VERSION:=0.3.8-beta
+PKG_VERSION:=0.3.9-beta
 PKG_RELEASE:=8
 
 include $(INCLUDE_DIR)/package.mk
@@ -20,7 +20,7 @@ define Package/luci-theme-$(THEME_NAME)
   CATEGORY:=LuCI
   SUBMENU:=9. Themes
   DEPENDS:=+libc
-  TITLE:=Tema LuCi - $(THEME_TITLE)
+  TITLE:=LuCi Theme For OpenWrt And Alpha OS ONLY - $(THEME_TITLE)
   URL:=http://facebook.com/derisamedia/
   PKGARCH:=all
 endef

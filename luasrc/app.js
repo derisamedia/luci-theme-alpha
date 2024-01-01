@@ -13,23 +13,23 @@
       false
     );
   
-    const isDark = localStorage.getItem("isDark");
-    if (isDark == 1) {
-      const element = document.querySelector("body");
-      element.classList.add("dark");
-    }
-    const themetoggler = document.querySelector(".themetoggler");
-    themetoggler.addEventListener(
-      "click",
-      function (e) {
-        e.preventDefault();
-        const element = document.querySelector("body");
-        element.classList.toggle("dark");
+    // const isDark = localStorage.getItem("isDark");
+    // if (isDark == 1) {
+    //   const element = document.querySelector("body");
+    //   element.classList.add("dark");
+    // }
+    // const themetoggler = document.querySelector(".themetoggler");
+    // themetoggler.addEventListener(
+    //   "click",
+    //   function (e) {
+    //     e.preventDefault();
+    //     const element = document.querySelector("body");
+    //     element.classList.toggle("dark");
   
-        const isDark = localStorage.getItem("isDark");
-        localStorage.setItem("isDark", isDark == 1 ? 0 : 1);
-      },
-      false
-    );
+    //     const isDark = localStorage.getItem("isDark");
+    //     localStorage.setItem("isDark", isDark == 1 ? 0 : 1);
+    //   },
+    //   false
+    // );
   })();
   

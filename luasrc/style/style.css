@@ -160,24 +160,14 @@ Login Box
   text-align: center;
   overflow: hidden;
   z-index: 2;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-  
-  -webkit-border-top-right-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  -moz-border-radius-bottomright: 6px;
-   border-top-right-radius: 6px;
-   border-bottom-left-radius: 6px;
-   border-bottom-right-radius: 6px;
-  
-  -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-     -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-          box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-border-radius: 20px:
+  -moz-border-radius= 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+  box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
 }
-
 .box-info {
 	width: 260px;
 	top: 60px;
@@ -291,7 +281,7 @@ label {
 	font-size: 13px;
 	font-weight: 700;
 	text-align: center;
-	line-height: 1.5;
+	line-height: 2.5;
 }
 
 label.checkbox {
@@ -396,7 +386,10 @@ img.tengah {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  width: 200px;
 }
 
 img.bawah {

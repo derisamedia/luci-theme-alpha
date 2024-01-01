@@ -66,7 +66,7 @@ b {
   -webkit-border-radius: 100px;
 }
 ::-webkit-scrollbar {
-  width: 0.5em !important;
+  width: 0.2em !important;
   overflow: visible;
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -289,7 +289,7 @@ label {
     font-family: inherit;
     font-weight: 400;
     line-height: 1.1 !important;
-    color: inherit;
+    color: #fff;
   }
   html {
     overflow-y: hidden;
@@ -304,6 +304,7 @@ label {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-color: rgb(10, 10, 10);
   }
 
   .text {
@@ -329,17 +330,17 @@ label {
   select,
   input,
   .cbi-dropdown {
-    height: 1.8rem;
+    height: 2.3rem;
     color: rgba(255, 255, 255, 0.87);
     border: 0;
     border-bottom: 2px solid #30304b;
     border-radius: 10px;
-    border-radius: 0;
+    border-radius: 20px;
     outline: 0;
     background-color: #222235;
     background-image: none;
     box-shadow: none;
-    padding: 0;
+    padding: 0.5rem;
   }
   select,
   .cbi-dropdown {
@@ -464,8 +465,9 @@ label {
     width: 32px;
     height: 32px;
     content: "";
-    background: url(./icons/logout.svg) no-repeat;
+    background: url(./icon/logout.svg) no-repeat;
     text-indent: -9999px;
+    background-size: 32px;
   }
   /* End Header */
   
@@ -480,6 +482,7 @@ label {
   }
   footer > a {
     text-decoration: none;
+    align-items: center;
     color: #e6e6e696;
     border-bottom: 0;
     background-color: #2222359a;
@@ -586,8 +589,10 @@ label {
       text-align: center;
       height: calc(50px + constant(safe-area-inset-bottom));
       height: calc(50px + env(safe-area-inset-bottom));
-      background-color: #000000f3;
+      background-color: #00000079;
       border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       
     }
     .navbar--hidden {
@@ -626,7 +631,7 @@ label {
     height: 100%;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.781);
-    transition: visibility 400ms, opacity 400ms;
+    transition: .4s ease-in-out;
     border-radius: 10px;
   }
   .main > .loading > span {
@@ -640,17 +645,29 @@ label {
     color: #888;
   }
   .main > .loading > span > .loading-img {
-    position: relative;
-    top: 0.1rem;
-    left: 0.05rem;
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    margin-right: 1rem;
-    animation: anim-rotate 2s infinite cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    background: url(./icons/spinner.svg) no-repeat center;
+    display: inline-flex;
+    gap: 10px;
   }
   
+  .main > .loading > span > .loading-img:before,.loading-img:after {
+    content: "";
+    height: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#222 0 0) top/100% 0% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #ffffff;
+    animation: l9 4s infinite ease-in;
+  }
+
+  @keyframes l9 {
+    0%  {background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+    80% {background-size:100% 70%,8px 8px;background-position:top, 50% 70%}
+    84%,
+    100%{background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+  }
+
   .cbi-map {
     margin-top: 10px;
   }
@@ -692,6 +709,7 @@ strong {
     border-bottom-right-radius: 20px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    height: calc(100% - 3.5rem);
 
   }
   .main > .main-left > .nav {
@@ -707,13 +725,18 @@ strong {
   }
   .main > .main-left > .nav > li:last-child {
     display: flex;
-    margin: 2rem 0 1rem;
-    padding: 0 0 0 2rem;
+    padding: 0.5rem 1rem;
   }
   .main > .main-left > .nav > li a {
     display: block;
     color: #cbcbcb;
   }
+
+  .main > .main-left > .nav > li > [data-title="Logout"] {
+    font-size: 1rem;
+    color: #fff;
+  }
+
   .main > .main-left > .nav > li.slide.active {
     background-color: unset;
   }
@@ -737,10 +760,11 @@ strong {
   .main > .main-left > .nav > .slide > .menu::before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/layout-fluid.png) no-repeat;
+    background: url(./icon/sidebar-icon/app.svg) no-repeat;
+    background-size: 25px;
   }
   .main > .main-left > .nav > .slide > .menu.active::before {
   }
@@ -748,74 +772,83 @@ strong {
     .main > .main-left > .nav > .slide > [data-title="Status"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/list.png) no-repeat;
+    background: url(./icon/sidebar-icon/status.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="System"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/settings.png) no-repeat;
+    background: url(./icon/sidebar-icon/system.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="Services"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/settings-sliders.png) no-repeat;
+    background: url(./icon/sidebar-icon/services.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="NAS"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/add-folder.png) no-repeat;
+    background: url(./icon/sidebar-icon/nas.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="Modem"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/books-medical.png) no-repeat;
+    background: url(./icon/sidebar-icon/modem.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="Network"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/broadcast-tower.png) no-repeat;
+    background: url(./icon/sidebar-icon/network.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="VPN"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/syringe.png) no-repeat;
+    background: url(./icon/sidebar-icon/vpn.svg) no-repeat;
+    background-size: 25px;
 }
 
     .main > .main-left > .nav > .slide > [data-title="Docker"]:before {
     position: absolute;
     right: 14px;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     content: "";
-    background: url(./sidebar-icon/docker.png) no-repeat;
+    background: url(./icon/sidebar-icon/docker.svg) no-repeat;
+    background-size: 25px;
 }
+
   /* End Sidebar */
   
   .modemenu-buttons {
@@ -846,8 +879,9 @@ strong {
     background-color: #ff7d60 !important;
   }
   .warning {
-    background-color: #bebebe !important;
+    background-color: #bebebe87 !important;
     border-radius: 10px;
+    color: #fff;
   }
   .success {
     background-color: #5cb85c !important;
@@ -860,10 +894,10 @@ strong {
     font-weight: 700;
     margin-bottom: 1em;
     border: 0;
-    border-radius: 10px;
-    background-color: #fff;
-    text-shadow: 1px 1px rgba(173, 31, 31, 0.1);
+    border-radius: 20px;
+    background-color: #2222359a;
     padding: 1rem;
+    margin: 1rem;
   }
   .alert-message > h4 {
     font-size: 110%;
@@ -885,12 +919,12 @@ strong {
   }
   .main > .main-left > .nav > li:last-child::before {
     position: absolute;
-    top:50%;
-    transform: translateY(-50%);
-    left: 14px;
-    width: 16px;
-    height: 16px;
-    content: url(./sidebar-icon/exit.png);
+    right: 14px;
+    width: 25px;
+    height: 25px;
+    content: "";
+    background: url(./icon/logout.svg) no-repeat;
+    background-size: 25px;
   }
   .main > .main-left > .nav > .slide:hover {
     background: none;
@@ -982,6 +1016,17 @@ strong {
     padding-bottom: 10px;
     margin: 2rem 0 0;
   }
+
+  .cbi-tab-descr {
+    color: #09c;
+    margin: 1em;
+    padding: 1rem;
+  }
+
+#tabmenu {
+    padding: 0;
+}
+
   .cbi-section,
   .cbi-section-error,
   #iptables,
@@ -1204,7 +1249,8 @@ strong {
   .cbi-button-neutral[onclick="handleConfig(event)"] {
     font-weight: 400;
     color: #fff;
-    background-color: #00e1ff38;
+    background-color: rgba(0, 229, 255, 0.47);
+    border-radius: 20px;
   }
   .cbi-page-actions .cbi-button-apply,
   .cbi-section-actions .cbi-button-edit,
@@ -1218,7 +1264,8 @@ strong {
   .cbi-button[onclick="addKey(event)"] {
     font-weight: 400;
     color: #fff;
-    background-color: #00e1ff38;
+    background-color: rgba(0, 229, 255, 0.47);
+    border-radius: 20px;
   }
   .btn.danger,
   .cbi-section-remove > .cbi-button,
@@ -1231,8 +1278,8 @@ strong {
   .cbi-button-neutral[value="Restart"] {
     font-weight: 400;
     color: #fff;
-
-    background-color: #d9534f52;
+    background-color: rgba(255, 0, 0, 0.47);
+    border-radius: 20px;
   }
   .btn[value="Dismiss"],
   .cbi-button[value="Terminate"],
@@ -1279,9 +1326,15 @@ strong {
     display: inline-block;
     cursor: pointer;
     padding: 0.4rem;
+    margin: 0.3rem;
     align-items: center;
 
   }
+
+  .tool_label_span {
+    color: aqua;
+}
+
   .tabs > li {
     padding-bottom: 0.4rem;
   }
@@ -1306,22 +1359,22 @@ strong {
   .cbi-tabmenu {
     border-bottom: 0;
     background-color: #2222359a;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 9px;
     padding-bottom: 3px;
     padding-top: 3px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
   .cbi-tabmenu > li:hover {
     background-color: #474747;
-    border-radius: 10px;
+    border-radius: 20px;
 
     
   }
   .cbi-tabmenu > li[class~="cbi-tab"] {
-    background-color: #ff9494;
-    border-radius: 10px;
+    background-color: #ff94946a;
+    border-radius: 20px;
   }
 
   .cbi-tabmenu > li[class~= data-tab=] {
@@ -1489,6 +1542,7 @@ strong {
     border: thin solid #d43f3a;
     background-color: #d9534f;
     padding: 0 6px;
+    border-radius: 5px;
   }
   .cbi-dynlist > .item > span {
     white-space: normal;
@@ -1579,7 +1633,7 @@ strong {
     min-height: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding: 0.25em;
+    padding: 0.3rem;
   }
   .cbi-dropdown > ul > li[display]:not([display="0"]) {
     border-left: thin solid #ccc;
@@ -1672,6 +1726,7 @@ strong {
     height: 100%;
     transition: width 2s ease-in;
     background: #0099cc;
+    padding: 0.5rem;
   }
   .cbi-progressbar::after {
     font-family: monospace;
@@ -1712,9 +1767,11 @@ strong {
     min-width: 270px;
     max-width: 600px;
     min-height: 32px;
-    border-radius: 10px !important;
-    background: #838383;
+    border-radius: 20px !important;
+    background: #8f8f8f75;
     margin: 5em auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1em;
 
   }
@@ -1784,14 +1841,13 @@ strong {
     position: absolute;
     font-size: medium;
     font-style: "Quicksand-Bold";
-    top: -8px;
-    bottom: 0;
-    left: -10px;
-    width: 36px;
-    height: 36px;
+    left: 8px;
+    width: 20px;
+    height: 20px;
     content: "";
     animation: anim-rotate 2s infinite cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    background: url(./icons/spinner16.svg) no-repeat center;
+    background: url(./icon/loading.svg) no-repeat center;
+    background-size: 20px;
   }
   }
   .left,
@@ -1886,8 +1942,8 @@ strong {
     resize: none;
     color: #eee;
     border: 0;
-    border-radius: 0;
-    background-color: #101010;
+    border-radius: 20px;
+    background-color: #10101057;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
     padding: 1rem;
   }
@@ -1936,6 +1992,7 @@ strong {
   .uci-change-legend-label {
     float: left;
     width: 150px;
+    color: #fff;
   }
   .uci-change-legend-label > ins,
   .uci-change-legend-label > del,
@@ -1959,14 +2016,30 @@ strong {
   .ifacebox {
     line-height: 1.25;
     display: inline-flex;
-    flex-direction: column;
-    min-width: 100px;
-    background-color: #6c6c6c;
-    border-radius: 10px;
+    flex-direction: row;
+    min-width: 150px;
+    background-color: #54545450;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: flex-start;
   }
+
+  div.ifacebox-head {
+    --zone-color-rgb: 144, 240, 144;
+    background-color: rgb(43, 79, 43);
+  }
+
+  style attribute {
+    --zone-color-rgb: 144, 240, 144;
+    background-color: rgb(43, 79, 43);
+  }
+
   .ifacebox-head {
     background: #939393;
     padding: 0.25em;
+    color: #fff;
   }
   .ifacebox-head.active {
     background: var(--bar-bg);
@@ -2042,10 +2115,13 @@ strong {
     white-space: pre;
     pointer-events: none;
     opacity: 0;
-    border-radius: 3px;
-    background: #fff;
+    border-radius: 20px;
+    background: #54545450;
     box-shadow: 0 0 2px #444;
     padding: 2px 5px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
   }
   .cbi-tooltip-container:hover .cbi-tooltip {
     left: auto;
@@ -2358,9 +2434,10 @@ strong {
     width: 32px;
     height: 32px;
     content: "";
-    background: url(./icons/refresh.svg) no-repeat;
+    background: url(./icon/loading.svg) no-repeat;
     text-indent: -9999px;
         animation: anim-rotate 5s infinite ease-in-out;
+    background-size: 32px;
   }
 
   [data-indicator="poll-status"][data-style="inactive"] {
@@ -2369,8 +2446,9 @@ strong {
     width: 32px;
     height: 32px;
     content: "";
-    background: url(./sidebar-icon/pause-circle.png) no-repeat;
+    background: url(./icon/pause.svg) no-repeat;
     text-indent: -9999px;
+    background-size: 32px;
   }
 
 
@@ -2379,8 +2457,9 @@ strong {
     width: 32px;
     height: 32px;
     content: "";
-    background: url(./sidebar-icon/floppy-disk-circle-arrow-right.png) no-repeat;
+    background: url(./icon/save.svg) no-repeat;
     text-indent: -9999px;
+    background-size: 32px;
   }
 
   #modemenu > li > a.active,
@@ -2568,7 +2647,7 @@ strong {
       font-size: 0.8rem;
       padding: 0.3rem 0.6rem;
       position: relative;
-      bottom: -0.5rem;
+      /*bottom: -0.5rem;*/
     }
     .label,
     [data-indicator] {
@@ -2598,7 +2677,7 @@ strong {
       padding: 0.3rem 0.6rem;
     }
   }
-  @media screen and (max-width: 1366px) {
+  @media screen and (max-width: 2000000000px) {
     header {
       height: 3.5rem;
     }
@@ -2648,7 +2727,8 @@ strong {
     .main > .main-left > .nav > li a,
     .main > .main-left > .nav > .slide > .menu,
     .main > .main-left > .nav > li > [data-title="Logout"] {
-      font-size: 0.9rem;
+      font-size: 1rem;
+      color: #fff;
     }
     .main > .main-left > .nav > .slide > .slide-menu > li > a {
       font-size: 0.7rem;
@@ -2982,7 +3062,7 @@ strong {
     .cbi-value-field .cbi-input-select,
     .cbi-value input[type="text"],
     .node-system-packages > .main .cbi-value .cbi-value-field input {
-      width: 100%;
+      width: 30%;
       color: #fff;
     }
     .cbi-page-actions > div > input,
