@@ -1,7 +1,7 @@
 [issues]: https://github.com/derisamedia/luci-theme-alpha/issues
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/derisamedia/luci-theme-alpha/releases
-[release-badge]: https://img.shields.io/github/v/release/jerrykuku/luci-app-argon-config?include_prereleases&style=flat-square
+[release-badge]: https://img.shields.io/badge/check-releases-blue
 
 
 
