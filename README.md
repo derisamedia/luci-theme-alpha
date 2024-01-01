@@ -9,6 +9,7 @@
 # luci-theme-alpha (BETA)
 <div align="center">
 <img src="https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/luasrc/brand.png">
+
 [![issues][issues-badge]][issues]
 
 
