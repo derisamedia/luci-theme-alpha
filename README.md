@@ -1,4 +1,9 @@
 # luci-theme-alpha (BETA)
+<div align="center">
+<img src="https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/luasrc/brand.png">
+
+
+
 Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and material luCi theme refferences,
 <summary>Preview Screenshoot</summary>
 <p>
