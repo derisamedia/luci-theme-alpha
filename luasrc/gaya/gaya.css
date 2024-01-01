@@ -2018,14 +2018,14 @@ strong {
   .ifacebox {
     line-height: 1.25;
     display: inline-flex;
-    flex-direction: row;
-    min-width: 150px;
+    flex-direction: column;
+    min-width: 100px;
     background-color: #54545450;
     border-radius: 20px;
     flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   div.ifacebox-head {
