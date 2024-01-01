@@ -1,6 +1,15 @@
+[issues]: https://github.com/jerrykuku/luci-app-argon-config/issues/new
+[issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
+
+
+
+
+
+
 # luci-theme-alpha (BETA)
 <div align="center">
 <img src="https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/luasrc/brand.png">
+[![issues][issues-badge]][issues]
 
 
 
