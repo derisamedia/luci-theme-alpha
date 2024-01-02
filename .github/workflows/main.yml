@@ -1,4 +1,4 @@
-name: "Auto compile with OpenWrt SDK"
+name: "Build Theme Alpha | OpenWrt SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
