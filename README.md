@@ -1,7 +1,7 @@
 [issues]: https://github.com/derisamedia/luci-theme-alpha/issues
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/derisamedia/luci-theme-alpha/releases
-[release-badge]: https://img.shields.io/badge/check-releases-blue
+[release-badge]: https://img.shields.io/badge/downloads?-check_releases-blue
 [group]: https://facebook.com/groups/indowrt
 [group-badge]: https://img.shields.io/badge/visit_Facebook-Comunity-cyan
 [discord]: https://discord.gg/gdZwmDQGUm
