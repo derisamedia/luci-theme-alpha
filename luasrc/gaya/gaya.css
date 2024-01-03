@@ -2108,6 +2108,9 @@ strong {
   span[data-tooltip],
   span[data-tooltip] .label {
     cursor: help !important;
+    text-align: left !important;
+    font-size: 80% !important;
+    color: #fff !important;
   }
   .cbi-tooltip {
     position: absolute;
@@ -3017,6 +3020,32 @@ strong {
       flex-basis: 50%;
       color: #fff;
     }
+
+    .tr > .td[data-title="Sensor"] {
+      text-align: center;
+    }
+
+    .tr > .td[data-title="Temperature"] {
+      text-align: center;
+    }
+
+    .tr > .td[data-title="Hostname"] {
+      text-align: center;
+    }
+
+    .tr > .td[data-title="IPv4 address"] {
+      text-align: center;
+    }
+    
+    .tr > .td[data-title="MAC address"] {
+      text-align: center;
+    }
+    
+    .tr > .td[data-title="Lease time remaining"] {
+      text-align: center;
+    }
+
+
     .td.cbi-value-field {
       flex-basis: 100%;
     }
@@ -3081,7 +3110,6 @@ strong {
     input {
       font-size: 0.9rem;
     }
-  }
   @media screen and (min-width: 600px) {
     ::-webkit-scrollbar {
       width: 10px;
