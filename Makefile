@@ -40,6 +40,8 @@ define Package/luci-theme-$(THEME_NAME)/install
 	$(CP) -a ./template/* $(1)/usr/lib/lua/luci/view/themes/$(THEME_NAME)/ 2>/dev/null || true
 	$(INSTALL_DIR) $(1)/www/luci-static/resources
 	$(CP) -a ./js/* $(1)/www/luci-static/resources/ 2>/dev/null || true
+	$(INSTALL_DIR) $(1)/etc/config
+	$(CP) -a ./root/etc/config/* $(1)/etc/config/ 2>/dev/null || true
 endef
 
 define Package/luci-theme-$(THEME_NAME)/postinst
