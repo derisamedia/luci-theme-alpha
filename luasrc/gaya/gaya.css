@@ -959,7 +959,7 @@
  	background-size: 25px;
  }
 
- .main>.main-left>.nav>.slide>[data-title="iStore"]:before {
+ .main>.main-left>.nav>li>[data-title="iStore"]:before {
  	position: absolute;
  	right: 14px;
  	width: 25px;
