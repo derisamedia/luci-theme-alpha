@@ -827,7 +827,7 @@
  	user-select: none;
  }
 
- .main>.main-left>.nav>li:last-child {
+ .main>.main-left>.nav>li>[data-title="Logout"] {
  	display: flex;
  	padding: 0.5rem 1rem;
  }
@@ -837,7 +837,8 @@
  	color: #cbcbcb;
  }
 
- .main>.main-left>.nav>li>[data-title="Logout"] {
+ .main>.main-left>.nav>li>[data-title="Logout"],
+ .main>.main-left>.nav>li>[data-title="iStore"] {
  	font-size: 1rem;
  	color: #fff;
  }
@@ -852,6 +853,7 @@
 
  .main>.main-left>.nav>.slide>.menu,
  .main>.main-left>.nav>li>[data-title="Logout"],
+ .main>.main-left>.nav>li>[data-title="iStore"],
  .main>.main-left>.nav>li>[data-title="Dashboard"] {
  	font-size: 1rem;
  	font-weight: 500;
@@ -957,6 +959,16 @@
  	background-size: 25px;
  }
 
+ .main>.main-left>.nav>.slide>[data-title="iStore"]:before {
+ 	position: absolute;
+ 	right: 14px;
+ 	width: 25px;
+ 	height: 25px;
+ 	content: "";
+ 	background: url(./icon/sidebar-icon/istore.svg) no-repeat;
+ 	background-size: 25px;
+ }
+
  /* End Sidebar */
 
  .modemenu-buttons {
@@ -1032,7 +1044,7 @@
  	transition: transform 0.2s ease-in-out;
  }
 
- .main>.main-left>.nav>li:last-child::before {
+ .main>.main-left>.nav>li>[data-title="Logout"]::before {
  	position: absolute;
  	right: 14px;
  	width: 25px;
@@ -1062,7 +1074,8 @@
 
  .main>.main-left>.nav>.slide>.menu,
  .main>.main-left>.nav>.slide>.slide-menu>li,
- .main>.main-left>.nav>li:last-child {
+ .main>.main-left>.nav>li>[data-title="Logout"],
+ .main>.main-left>.nav>li>[data-title="iStore"] {
  	position: relative;
  	overflow: hidden;
  	transform: translate3d(0, 0, 0);
@@ -1070,7 +1083,8 @@
 
  .main>.main-left>.nav>.slide>.menu::after,
  .main>.main-left>.nav>.slide>.slide-menu>li::after,
- .main>.main-left>.nav>li:last-child::after {
+ .main>.main-left>.nav>li>[data-title="Logout"]::after,
+ .main>.main-left>.nav>li>[data-title="iStore"]::after {
  	position: absolute;
  	top: 0;
  	left: 0;
@@ -1089,7 +1103,8 @@
 
  .main>.main-left>.nav>.slide>.menu:active::after,
  .main>.main-left>.nav>.slide>.slide-menu>li:active::after,
- .main>.main-left>.nav>li:last-child:active::after {
+ .main>.main-left>.nav>li>[data-title="Logout"]:active::after,
+ .main>.main-left>.nav>li>[data-title="iStore"]:active::after {
  	transition: 0s;
  	transform: scale(0, 0);
  	opacity: 0.2;
@@ -3117,7 +3132,8 @@
  	.main>.main-left>.nav>li,
  	.main>.main-left>.nav>li a,
  	.main>.main-left>.nav>.slide>.menu,
- 	.main>.main-left>.nav>li>[data-title="Logout"] {
+ 	.main>.main-left>.nav>li>[data-title="Logout"],
+  .main>.main-left>.nav>li>[data-title="iStore"] {
  		font-size: 1rem;
  		color: #fff;
  	}
@@ -3389,7 +3405,8 @@
  }
 
  .main>.main-left>.nav>.slide>.menu,
- .main>.main-left>.nav>li>[data-title="Logout"] {
+ .main>.main-left>.nav>li>[data-title="Logout"],
+ .main>.main-left>.nav>li>[data-title="iStore"] {
  	font-size: 1.1rem;
  }
 
