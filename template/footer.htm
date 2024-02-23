@@ -34,43 +34,63 @@ local function getLink(nav)
 	local link = config[nav]
 	return (link ~= "none") and link or nil
 end
+
+local num_links = 0
+for i = 1, 6 do
+	local nav_key = 'nav_0' .. i
+	local link = getLink(nav_key)
+	if link then
+		num_links = num_links + 1
+	end
+end
+
+local link_width = string.format("calc(100%% / %d)", num_links)
 %>
-	</div>	
-	<footer class="mobile">
-	<a href="https://github.com/derisamedia/luci-theme-alpha"><%=ver.luciname%> | <%=ver.luciversion%> | Alpha OS Theme v3.9</a>
-	</footer>
-	</div>
-	<div class="navbar active">
-		<div class="dropdown">
-			<% for i = 1, 6 do 
-				local nav_key = 'nav_0' .. i
-				local link = getLink(nav_key)
-				if link then %>
-					<a href="<%= link %>">
-						<img src="<%=media%><%=icon[link]%>"/>
-					</a>
-				<% end
-			end %>
-		</div>
-		<label class="toggler">
-			<img src="<%=media%>/gaya/icon/arrow.svg">
-		</label>
-	</div>
-	<script>
-	{
-		const nav = document.querySelector(".navbar");
-		let lastScrollY = window.scrollY;
-		window.addEventListener("scroll", () => {
-			if (lastScrollY < window.scrollY) {
-				nav.classList.add("navbar--hidden");
-			} 
-			else {
-				nav.classList.remove("navbar--hidden");
-			}
-			lastScrollY = window.scrollY;
-		});
+
+<style>
+	@media screen and (max-width: 720px) {
+		.navbar a {
+			width: <%= link_width %>;
+		}
 	}
-	</script>
+</style>
+
+</div>
+<footer class="mobile">
+	<a href="https://github.com/derisamedia/luci-theme-alpha"><%=ver.luciname%> | <%=ver.luciversion%> | Alpha OS Theme v3.9</a>
+</footer>
+</div>
+<div class="navbar active">
+	<div class="dropdown">
+		<% for i = 1, 6 do 
+			local nav_key = 'nav_0' .. i
+			local link = getLink(nav_key)
+			if link then %>
+				<a href="<%=link%>">
+					<img src="<%=media%><%=icon[link]%>" />
+				</a>
+			<% end
+		end %>
+	</div>
+	<label class="toggler">
+		<img src="<%=media%>/gaya/icon/arrow.svg">
+	</label>
+</div>
+<script>
+{
+	const nav = document.querySelector(".navbar");
+	let lastScrollY = window.scrollY;
+	window.addEventListener("scroll", () => {
+		if (lastScrollY < window.scrollY) {
+			nav.classList.add("navbar--hidden");
+		} 
+		else {
+			nav.classList.remove("navbar--hidden");
+		}
+		lastScrollY = window.scrollY;
+	});
+}
+</script>
 </div>
 <script type="text/javascript">L.require('menu-alpha')</script>
 <script src="<%=media%>/app.js"></script>
