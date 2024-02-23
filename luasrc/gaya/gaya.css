@@ -688,9 +688,7 @@
  		float: left;
  		text-align: center;
  		padding: 8px 0;
- 		width: calc(100% / 6);
  		text-decoration: none;
- 		max-width: 100px;
  	}
 
  	.navbar a img {
