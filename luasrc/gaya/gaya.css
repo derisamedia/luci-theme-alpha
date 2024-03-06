@@ -2756,6 +2756,7 @@
  #cbi-firewall-zone .td,
  #cbi-network-switch_vlan .td {
  	width: 100%;
+ 	min-width: 60px;
  }
 
  .cbi-rowstyle-2 {
