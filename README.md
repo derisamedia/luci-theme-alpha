@@ -22,6 +22,7 @@
 [![release][release-badge]][release]
 [![group][group-badge]][group]
 [![discord][discord-badge]][discord]
+[![paypal][paypal-badge]][paypal]
 
 
 Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and material luCi theme refferences,
