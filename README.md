@@ -6,7 +6,8 @@
 [group-badge]: https://img.shields.io/badge/visit_Facebook-Comunity-cyan
 [discord]: https://discord.gg/gdZwmDQGUm
 [discord-badge]: https://img.shields.io/badge/visit_Discord-Comunity-blue
-
+[paypal]: https://www.paypal.com/paypalme/derisamedia
+[paypal-badge]: https://img.shields.io/badge/Donate_Paypal-me-blue
 
 
 
