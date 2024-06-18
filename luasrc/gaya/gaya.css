@@ -2114,7 +2114,6 @@
  	background: url(./icon/loading.svg) no-repeat center;
  	background-size: 20px;
  }
- }
 
  .left,
  .left::before {
@@ -3574,8 +3573,14 @@
  .cbi-value-field .cbi-input-select,
  .cbi-value input[type="text"],
  .node-system-packages>.main .cbi-value .cbi-value-field input {
- 	width: 5rem;
- 	color: #fff;
+    width: 100%;
+    display: flex;
+    color: #fff;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-content: stretch;
+    align-items: flex-start;
+}
  }
 
  .cbi-page-actions>div>input,
