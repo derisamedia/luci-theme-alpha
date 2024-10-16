@@ -14,8 +14,11 @@
 
 
 
-# luci-theme-alpha (BETA)
+
 <div align="center">
+
+# luci-theme-alpha (BETA)
+
 <img src="https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/luasrc/brand.png">
 
 [![issues][issues-badge]][issues]
@@ -43,7 +46,7 @@ Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and mater
 
 </p>
 
-### Contributors
+# Contributors
 <a href="https://github.com/derisamedia/luci-theme-alpha/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=derisamedia/luci-theme-alpha" />
 </a>
