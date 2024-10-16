@@ -43,6 +43,12 @@ Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and mater
 
 </p>
 
+<a href="https://github.com/derisamedia/luci-theme-alpha/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=derisamedia/luci-theme-alpha" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 ### FYI
 
 alpha os is my idea which wants to develop the OpenWrt community in Indonesia, even the world, thanks to friends who have supported this alpha-os theme, hopefully given health to all of us.
