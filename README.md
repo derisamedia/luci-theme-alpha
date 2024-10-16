@@ -42,6 +42,7 @@ Luci theme for Official Openwrt and Alpha OS build ,based on bootstrap and mater
 ![image](https://raw.githubusercontent.com/derisamedia/luci-theme-alpha/master/mobileview3.png)
 
 </p>
+
 ### Contributors
 <a href="https://github.com/derisamedia/luci-theme-alpha/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=derisamedia/luci-theme-alpha" />
