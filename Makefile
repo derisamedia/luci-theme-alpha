@@ -46,9 +46,6 @@ endef
 
 define Package/luci-theme-$(THEME_NAME)/postinst
 #!/bin/sh
-[ -n "$${IPKG_INSTROOT}" ] || {
-	( . /etc/uci-defaults/30-luci-theme-$(THEME_NAME) ) && rm -f /etc/uci-defaults/30-luci-theme-$(THEME_NAME)
-}
 endef
 
 $(eval $(call BuildPackage,luci-theme-$(THEME_NAME)))
