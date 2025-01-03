@@ -47,9 +47,9 @@ endef
 define Package/luci-theme-$(THEME_NAME)/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
-	if [ -f /etc/uci-defaults/30-luci-theme-alpha ]; then
-		. /etc/uci-defaults/30-luci-theme-alpha
-		rm -f /etc/uci-defaults/30-luci-theme-alpha
+	if [ -f /etc/uci-defaults/30-luci-theme-$(THEME_NAME) ]; then
+		. /etc/uci-defaults/30-luci-theme-$(THEME_NAME)
+		rm -f /etc/uci-defaults/30-luci-theme-$(THEME_NAME)
 	fi
 fi
 exit 0
