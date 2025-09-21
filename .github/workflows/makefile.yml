@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository (branch Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx))
-        uses: actions/checkout@v4
-        with:
-          ref: Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)
+      - name: Clone luci-theme-alpha (branch Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx))
+        run: |
+          git clone -b "Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)" https://github.com/derisamedia/luci-theme-alpha.git luci-theme-alpha
+          ls -R luci-theme-alpha
 
       - name: Install dependencies
         run: |
@@ -20,7 +20,7 @@ jobs:
             gettext git java-propose-classpath libncurses5-dev libssl-dev python3 \
             python3-distutils unzip wget zlib1g-dev
 
-      - name: Download OpenWrt SDK
+      - name: Download OpenWrt SDK (x86_64, OpenWrt 23.05.2)
         run: |
           wget https://downloads.openwrt.org/releases/23.05.2/targets/x86/64/openwrt-sdk-23.05.2-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
           tar -xf openwrt-sdk-*.tar.xz
@@ -30,7 +30,7 @@ jobs:
       - name: Copy luci-theme-alpha
         run: |
           mkdir -p openwrt-sdk/package/custom
-          cp -r ./luci-theme-alpha openwrt-sdk/package/custom/
+          cp -r luci-theme-alpha openwrt-sdk/package/custom/
 
       - name: Build luci-theme-alpha
         run: |
