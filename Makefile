@@ -1,16 +1,16 @@
-# LuCI Alpha Theme
-# Copyright 2024 derisamedia <yuimizuno86@gmail.com>
+# LuCI Alpha 4.0 (beta) Theme
+# Copyright 2025 derisamedia <yuimizuno86@gmail.com>
 #
 # Licensed under the Apache License v2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
 include $(TOPDIR)/rules.mk
 
-THEME_NAME:=alpha
-THEME_TITLE:=Alpha
+THEME_NAME:=alpha4
+THEME_TITLE:=alpha4
 
 PKG_NAME:=luci-theme-$(THEME_NAME)
-PKG_VERSION:=3.9.5-beta
+PKG_VERSION:=4.0.0-beta
 PKG_RELEASE:=10
 
 include $(INCLUDE_DIR)/package.mk
@@ -20,7 +20,7 @@ define Package/luci-theme-$(THEME_NAME)
   CATEGORY:=LuCI
   SUBMENU:=9. Themes
   DEPENDS:=+libc
-  TITLE:=LuCi Theme For OpenWrt And Alpha OS ONLY - $(THEME_TITLE)
+  TITLE:=LuCi Theme For OpenWrt And Alpha OS ONLY (For OpenWrt. 24.xx) - $(THEME_TITLE)
   URL:=http://facebook.com/derisamedia/
   PKGARCH:=all
 endef
@@ -36,8 +36,8 @@ define Package/luci-theme-$(THEME_NAME)/install
 	echo "uci set luci.themes.$(THEME_TITLE)=/luci-static/$(THEME_NAME); uci commit luci" > $(1)/etc/uci-defaults/30-luci-theme-$(THEME_NAME)
 	$(INSTALL_DIR) $(1)/www/luci-static/$(THEME_NAME)
 	$(CP) -a ./luasrc/* $(1)/www/luci-static/$(THEME_NAME)/ 2>/dev/null || true
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view/themes/$(THEME_NAME)
-	$(CP) -a ./template/* $(1)/usr/lib/lua/luci/view/themes/$(THEME_NAME)/ 2>/dev/null || true
+	$(INSTALL_DIR) $(1)/usr/share/ucode/luci/template/themes/$(THEME_NAME)
+	$(CP) -a ./template/* $(1)/usr/share/ucode/luci/template/themes/$(THEME_NAME)/ 2>/dev/null || true
 	$(INSTALL_DIR) $(1)/www/luci-static/resources
 	$(CP) -a ./js/* $(1)/www/luci-static/resources/ 2>/dev/null || true
 	$(INSTALL_DIR) $(1)/etc/config
