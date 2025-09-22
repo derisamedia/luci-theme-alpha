@@ -14,9 +14,9 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#09c">
+<meta name="theme-color" content="#2222359a">
 <meta name="msapplication-tap-highlight" content="no">
-<meta name="msapplication-TileColor" content="#09c">
+<meta name="msapplication-TileColor" content="#2222359a">
 <meta name="application-name" content="{{ hostname }} - LuCI">
 <meta name="apple-mobile-web-app-title" content="{{ hostname }} - LuCI">
 <link rel="stylesheet" href="{{ media }}/gaya.css">
@@ -37,7 +37,7 @@
 <header>
 	<div class="fill">
 		<div class="container">
-			<span class="showSide"><img src="/luci-static/material/icon/menu_icon.svg"></span>
+			<span class="showSide"><img src="/luci-static/alpha4/icon/menu_icon.svg"></span>
 			<a id="logo" href="{{ ctx.authsession ? dispatcher.build_url('admin/status/overview') : '#' }}"><img src="{{ media }}/brand.png"></a>
 			<span class="status" id="indicators"></span>
        		<span class="logout" >  

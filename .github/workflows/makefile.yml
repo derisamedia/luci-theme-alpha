@@ -1,18 +1,17 @@
-name: Build single OpenWrt package
+name: Build luci-theme-alpha
 
 on:
-  workflow_dispatch: # jalan manual
-  push:
-    branches:
-      - Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Clone luci-theme-alpha (branch Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx))
+        run: |
+          git clone -b "Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)" https://github.com/derisamedia/luci-theme-alpha.git luci-theme-alpha
+          ls -R luci-theme-alpha
 
       - name: Install dependencies
         run: |
@@ -21,27 +20,28 @@ jobs:
             gettext git java-propose-classpath libncurses5-dev libssl-dev python3 \
             python3-distutils unzip wget zlib1g-dev
 
-      - name: Download OpenWrt SDK
+      - name: Download OpenWrt SDK (x86_64, OpenWrt 23.05.2)
         run: |
           wget https://downloads.openwrt.org/releases/23.05.2/targets/x86/64/openwrt-sdk-23.05.2-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
           tar -xf openwrt-sdk-*.tar.xz
-          mv openwrt-sdk-* openwrt-sdk
+          SDK_DIR=$(find . -maxdepth 1 -type d -name "openwrt-sdk-*")
+          mv "$SDK_DIR" openwrt-sdk
 
-      - name: Copy package
+      - name: Copy luci-theme-alpha
         run: |
           mkdir -p openwrt-sdk/package/custom
-          cp -r ./luci-app-myapp openwrt-sdk/package/custom/
+          cp -r luci-theme-alpha openwrt-sdk/package/custom/
 
-      - name: Build package
+      - name: Build luci-theme-alpha
         run: |
           cd openwrt-sdk
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           make defconfig
-          make package/custom/luci-app-alpha4/compile V=s
+          make package/custom/luci-theme-alpha/compile V=s
 
       - name: Upload ipk
         uses: actions/upload-artifact@v4
         with:
-          name: luci-app-alpha4
+          name: luci-theme-alpha
           path: openwrt-sdk/bin/packages/**/*.ipk
