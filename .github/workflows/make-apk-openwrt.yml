@@ -1,0 +1,58 @@
+name: Build luci-theme-alpha APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # 1. Checkout repo theme luci-theme-alpha di folder "theme"
+      - name: Checkout luci-theme-alpha
+        uses: actions/checkout@v4
+        with:
+          repository: derisamedia/luci-theme-alpha
+          ref: Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)
+          path: theme
+
+      # 2. Clone OpenWrt source ke folder "openwrt"
+      - name: Clone OpenWrt source
+        run: |
+          git clone https://github.com/openwrt/openwrt.git openwrt
+          cd openwrt
+          # pakai commit SHA snapshot terbaru (sudah support APK)
+          git checkout d872d00b2f7e31b98e11e83922d1aaefc270647e
+
+      # 3. Update feeds & install
+      - name: Update feeds
+        run: |
+          cd openwrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      # 4. Copy theme ke dalam package/custom
+      - name: Copy luci-theme-alpha
+        run: |
+          mkdir -p openwrt/package/custom/
+          cp -r theme openwrt/package/custom/luci-theme-alpha
+
+      # 5. Enable APK in config
+      - name: Enable APK in config
+        run: |
+          cd openwrt
+          echo "CONFIG_PACKAGE_MANAGER_APK=y" >> .config
+          make defconfig
+
+      # 6. Build luci-theme-alpha
+      - name: Build luci-theme-alpha
+        run: |
+          cd openwrt
+          make package/custom/luci-theme-alpha/compile V=s
+
+      # 7. Upload hasil build (APK)
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: luci-theme-alpha-apk
+          path: openwrt/bin/packages/**/*.apk
