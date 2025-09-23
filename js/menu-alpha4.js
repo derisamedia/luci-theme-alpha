@@ -49,26 +49,72 @@ return baseclass.extend({
         }
     },
 
+    // === Animasi buka/tutup iOS style (smooth) ===
     handleMenuExpand(ev) {
         const a = ev.target;
         const ul1 = a.parentNode;
         const ul2 = a.nextElementSibling;
+        const alreadyActive = ul1.classList.contains('active');
 
+        // Tutup semua slide lain dengan animasi halus
         document.querySelectorAll('li.slide.active').forEach(function (li) {
-            if (li !== a.parentNode || li == ul1) {
-                li.classList.remove('active');
-                if (li.childNodes[0]) li.childNodes[0].classList.remove('active');
+            if (li !== ul1) {
+                const submenu = li.childNodes[1];
+                const link = li.childNodes[0];
+
+                if (submenu && submenu.style) {
+                    submenu.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+                    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                    submenu.style.opacity = 1;
+                    requestAnimationFrame(() => {
+                        submenu.style.maxHeight = '0px';
+                        submenu.style.opacity = 0;
+                    });
+
+                    submenu.addEventListener('transitionend', function onEnd() {
+                        li.classList.remove('active');
+                        if (link) link.classList.remove('active');
+                        submenu.removeEventListener('transitionend', onEnd);
+                    });
+                }
             }
-            if (li == ul1) return;
         });
 
-        if (!ul2) return;
+        if (alreadyActive) {
+            // Tutup menu aktif dengan animasi
+            if (ul2 && ul2.style) {
+                ul2.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+                ul2.style.maxHeight = ul2.scrollHeight + 'px';
+                ul2.style.opacity = 1;
+                requestAnimationFrame(() => {
+                    ul2.style.maxHeight = '0px';
+                    ul2.style.opacity = 0;
+                });
 
-        if (ul2.parentNode.offsetLeft + ul2.offsetWidth <= ul1.offsetLeft + ul1.offsetWidth)
-            ul2.classList.add('align-left');
+                ul2.addEventListener('transitionend', function onEnd() {
+                    ul1.classList.remove('active');
+                    a.classList.remove('active');
+                    ul2.removeEventListener('transitionend', onEnd);
+                });
+            }
+        } else {
+            // Buka menu baru setelah animasi tutup menu lain
+            if (!ul2) return;
+            setTimeout(() => {
+                ul2.style.overflow = 'hidden';
+                ul2.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+                ul2.style.maxHeight = '0px';
+                ul2.style.opacity = 0;
+                requestAnimationFrame(() => {
+                    ul2.style.maxHeight = ul2.scrollHeight + 'px';
+                    ul2.style.opacity = 1;
+                });
 
-        ul1.classList.add('active');
-        a.classList.add('active');
+                ul1.classList.add('active');
+                a.classList.add('active');
+            }, 50);
+        }
+
         a.blur();
         ev.preventDefault();
         ev.stopPropagation();
@@ -230,21 +276,21 @@ return baseclass.extend({
                 ['Click the X button to close this message.']
             );
 
-const popup = E('div', { 'class': 'popup-box' }, [
-    E('div', { 'class': 'popup-header' }, [
-        E('img', { 
-            'src': L.env.media + '/icon/caution.svg',
-            'class': 'popup-icon'
-        }),
-        E('span', { 'class': 'popup-title' }, ['Caution'])
-    ]),
-    E('div', { 'class': 'popup-content' }, [contentNode]),
-    infoEl,
-    E('button', {
-        'class': 'popup-close',
-        'click': () => { closePopup(); }
-    }, ['X'])
-]);
+            const popup = E('div', { 'class': 'popup-box' }, [
+                E('div', { 'class': 'popup-header' }, [
+                    E('img', { 
+                        'src': L.env.media + '/icon/caution.svg',
+                        'class': 'popup-icon'
+                    }),
+                    E('span', { 'class': 'popup-title' }, ['Caution'])
+                ]),
+                E('div', { 'class': 'popup-content' }, [contentNode]),
+                infoEl,
+                E('button', {
+                    'class': 'popup-close',
+                    'click': () => { closePopup(); }
+                }, ['X'])
+            ]);
             overlay.appendChild(popup);
             document.body.appendChild(overlay);
 
