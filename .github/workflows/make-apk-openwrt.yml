@@ -21,13 +21,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential ccache ecj fastjar file g++ gawk \
             gettext git java-propose-classpath libncurses5-dev libssl-dev python3 \
-            python3-setuptools unzip wget zlib1g-dev
+            python3-setuptools unzip wget zlib1g-dev zstd curl
 
       - name: Download OpenWrt SDK (Snapshot with APK support)
         run: |
-          # Ambil Snapshot terbaru dengan arsitektur x86_64 yang sudah mensupport obyek APK
-          wget https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.xz
-          tar -xf openwrt-sdk-*.tar.xz
+          # Ambil nama file SDK Snapshot terbaru agar tidak error saat versi GCC/kompresi diupdate
+          SDK_FILE=$(curl -sL https://downloads.openwrt.org/snapshots/targets/x86/64/sha256sums | grep "openwrt-sdk" | awk '{print $2}' | sed 's/*//')
+          echo "Downloading $SDK_FILE..."
+          wget "https://downloads.openwrt.org/snapshots/targets/x86/64/$SDK_FILE"
+          tar -xf "$SDK_FILE"
+          rm "$SDK_FILE"
           mv openwrt-sdk-* openwrt-sdk
 
       - name: Configure APK Package Manager
