@@ -1,14 +1,16 @@
-name: Build single OpenWrt package
+name: Build luci-theme-alpha IPK (OpenWrt <= 23.xx)
 
 on:
-  workflow_dispatch: # jalan manual
+  workflow_dispatch:
   push:
     branches:
-      - Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)
+      - main
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    name: Build IPK natively via GitHub Actions
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -19,18 +21,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential ccache ecj fastjar file g++ gawk \
             gettext git java-propose-classpath libncurses5-dev libssl-dev python3 \
-            python3-distutils unzip wget zlib1g-dev
+            python3-distutils unzip wget zlib1g-dev python3-setuptools
 
-      - name: Download OpenWrt SDK
+      - name: Download OpenWrt SDK (23.05.3)
         run: |
-          wget https://downloads.openwrt.org/releases/23.05.2/targets/x86/64/openwrt-sdk-23.05.2-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+          wget https://downloads.openwrt.org/releases/23.05.3/targets/x86/64/openwrt-sdk-23.05.3-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
           tar -xf openwrt-sdk-*.tar.xz
           mv openwrt-sdk-* openwrt-sdk
 
       - name: Copy package
         run: |
-          mkdir -p openwrt-sdk/package/custom
-          cp -r ./luci-theme-alpha openwrt-sdk/package/custom/
+          mkdir -p openwrt-sdk/package/luci-theme-alpha
+          # Copy parent folder contents to SDK package folder directly
+          cp -a ./ openwrt-sdk/package/luci-theme-alpha/
+          # Remove SDK folder from inside itself to prevent infinite loop errors if somehow it was copied
+          rm -rf openwrt-sdk/package/luci-theme-alpha/openwrt-sdk*
 
       - name: Build package
         run: |
@@ -38,10 +43,10 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           make defconfig
-          make package/custom/luci-theme-alpha/compile V=s
+          make package/luci-theme-alpha/compile V=s
 
       - name: Upload ipk
         uses: actions/upload-artifact@v4
         with:
-          name: luci-theme-alpha
-          path: openwrt-sdk/bin/packages/**/*.ipk
+          name: luci-theme-alpha-ipk
+          path: openwrt-sdk/bin/packages/**/*/luci-theme-alpha*.ipk

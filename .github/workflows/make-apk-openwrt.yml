@@ -1,54 +1,60 @@
-name: Build luci-theme-alpha with APK
+name: Build luci-theme-alpha APK (OpenWrt >= 24.xx)
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    name: Build APK natively via GitHub Actions
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Clone luci-theme-alpha (branch Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx))
-        run: |
-          git clone -b "Alpha-OS-4.0-Beta-(for-OpenWrt-24.xx)" https://github.com/derisamedia/luci-theme-alpha.git luci-theme-alpha
-          ls -R luci-theme-alpha
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential ccache ecj fastjar file g++ gawk \
             gettext git java-propose-classpath libncurses5-dev libssl-dev python3 \
-            python3-distutils unzip wget zlib1g-dev
+            python3-distutils unzip wget zlib1g-dev python3-setuptools
 
-      - name: Download OpenWrt SDK or full source with APK support
+      - name: Download OpenWrt SDK (Snapshot with APK support)
         run: |
-          # contoh: ambil snapshot atau versi OpenWrt yang sudah enable APK
-          wget https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-xxx-xxx_apk-enabled.tar.xz
-          tar -xf openwrt-*.tar.xz
-          SDK_DIR=$(find . -maxdepth 1 -type d -name "openwrt-*")
-          mv "$SDK_DIR" openwrt
+          # Ambil Snapshot terbaru dengan arsitektur x86_64 yang sudah mensupport obyek APK
+          wget https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.xz
+          tar -xf openwrt-sdk-*.tar.xz
+          mv openwrt-sdk-* openwrt-sdk
+
+      - name: Configure APK Package Manager
+        run: |
+          cd openwrt-sdk
+          # Aktifkan build APK di SDK OpenWrt terbaru via .config override
+          echo "CONFIG_USE_APK=y" >> .config
+          echo "CONFIG_PACKAGE_luci-theme-alpha=m" >> .config
 
       - name: Copy package
         run: |
-          mkdir -p openwrt/package/custom
-          cp -r luci-theme-alpha openwrt/package/custom/
+          mkdir -p openwrt-sdk/package/luci-theme-alpha
+          # Copy source folder contents to SDK package folder directly
+          cp -a ./ openwrt-sdk/package/luci-theme-alpha/
+          # Remove SDK folder from inside itself to prevent infinite loop errors
+          rm -rf openwrt-sdk/package/luci-theme-alpha/openwrt-sdk*
 
-      - name: Configure build to use APK format
+      - name: Build package
         run: |
-          cd openwrt
-          # Pastikan di menuconfig atau config umum build di-set untuk APK sebagai package format
-          # Bisa juga set var di .config: 
-          #   CONFIG_PACKAGE_MANAGER_APK=y
-          # atau konfigurasi sesuai dokumentasi OpenWrt terbaru
+          cd openwrt-sdk
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           make defconfig
-          # Jika perlu, jalankan menuconfig jika customisation
-          # make menuconfig
-          make package/custom/luci-theme-alpha/compile V=s
+          make package/luci-theme-alpha/compile V=s
 
       - name: Upload apk
         uses: actions/upload-artifact@v4
         with:
           name: luci-theme-alpha-apk
-          path: openwrt/bin/packages/**/*.apk
+          path: openwrt-sdk/bin/packages/**/*/*.apk
