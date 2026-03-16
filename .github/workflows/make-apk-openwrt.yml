@@ -43,10 +43,9 @@ jobs:
       - name: Copy package
         run: |
           mkdir -p openwrt-sdk/package/luci-theme-alpha
-          # Copy source folder contents to SDK package folder directly
-          cp -a ./ openwrt-sdk/package/luci-theme-alpha/
-          # Remove SDK folder from inside itself to prevent infinite loop errors
-          rm -rf openwrt-sdk/package/luci-theme-alpha/openwrt-sdk*
+          # Copy source folder contents to SDK package folder directly using rsync
+          # excludes openwrt-sdk directory to prevent infinitely copying itself
+          rsync -a --exclude=openwrt-sdk/ ./ openwrt-sdk/package/luci-theme-alpha/
 
       - name: Build package
         run: |

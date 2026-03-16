@@ -27,15 +27,15 @@ jobs:
         run: |
           wget https://downloads.openwrt.org/releases/23.05.3/targets/x86/64/openwrt-sdk-23.05.3-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
           tar -xf openwrt-sdk-*.tar.xz
+          rm openwrt-sdk-*.tar.xz
           mv openwrt-sdk-* openwrt-sdk
 
       - name: Copy package
         run: |
           mkdir -p openwrt-sdk/package/luci-theme-alpha
-          # Copy parent folder contents to SDK package folder directly
-          cp -a ./ openwrt-sdk/package/luci-theme-alpha/
-          # Remove SDK folder from inside itself to prevent infinite loop errors if somehow it was copied
-          rm -rf openwrt-sdk/package/luci-theme-alpha/openwrt-sdk*
+          # Copy parent folder contents to SDK package folder directly using rsync
+          # excludes openwrt-sdk directory to prevent infinitely copying itself
+          rsync -a --exclude=openwrt-sdk/ ./ openwrt-sdk/package/luci-theme-alpha/
 
       - name: Build package
         run: |
