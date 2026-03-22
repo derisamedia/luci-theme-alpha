@@ -30,8 +30,9 @@ return baseclass.extend({
       );
     document.querySelector(".main > .loading").style.opacity = "0";
     document.querySelector(".main > .loading").style.visibility = "hidden";
-    if (window.innerWidth <= 1152)
-      document.querySelector(".main-left").style.width = "0";
+    if (window.innerWidth <= 1152) {
+      document.querySelector(".main-left").style.transform = "translateX(-20rem)";
+    }
     window.addEventListener("resize", this.handleSidebarToggle, true);
   },
   handleMenuExpand: function (ev) {
@@ -179,7 +180,7 @@ return baseclass.extend({
       darkMask = document.querySelector(".darkMask"),
       mainRight = document.querySelector(".main-right"),
       mainLeft = document.querySelector(".main-left"),
-      open = mainLeft.style.width == ""; // true if currently open
+      open = mainLeft.style.transform === ""; // true if currently open
     
     // If it's a resize event, we simulate that the sidebar was "open" so the logic below closes it for mobile, and opens it for desktop
     if (ev.type == "resize") {
@@ -195,7 +196,8 @@ return baseclass.extend({
 
     if (width <= 1152) {
         // Mobile behavior
-        mainLeft.style.width = willOpen ? "" : "0";
+        mainLeft.style.width = ""; // Reset width
+        mainLeft.style.transform = willOpen ? "" : "translateX(-20rem)";
         mainLeft.style.visibility = willOpen ? "visible" : "";
         darkMask.style.visibility = willOpen ? "visible" : "";
         darkMask.style.opacity = willOpen ? 1 : "";
@@ -203,7 +205,8 @@ return baseclass.extend({
         mainRight.style.width = "";
     } else {
         // Desktop behavior
-        mainLeft.style.width = willOpen ? "" : "0";
+        mainLeft.style.width = ""; // Reset width
+        mainLeft.style.transform = willOpen ? "" : "translateX(-20rem)";
         mainLeft.style.visibility = willOpen ? "visible" : "hidden";
         mainRight.style.width = willOpen ? "" : "100%";
         darkMask.style.visibility = "";
