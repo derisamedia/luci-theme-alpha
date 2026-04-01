@@ -1399,6 +1399,15 @@ body.lang_zh_TW {
  	margin-left: 0.6rem;
  }
 
+.btn,
+.cbi-button,
+[data-page="admin-system-opkg"] div.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.2;
+}
+
  .btn:hover,
  .btn:focus,
  .btn:active,
@@ -2208,6 +2217,7 @@ body.lang_zh_TW {
 
  .ifacebadge {
  	display: inline-flex;
+	align-items: center;
  	background: #ffffff33;
  	padding: 0.5rem 0.8rem;
  	border-radius: 10px;
@@ -2223,7 +2233,7 @@ body.lang_zh_TW {
  .ifacebadge>em,
  .ifacebadge>img {
  	display: inline-block;
- 	align-self: flex-start;
+	align-self: center;
  	margin: 0 0.2rem;
  }
 
@@ -2648,8 +2658,8 @@ body.lang_zh_TW {
  }
 
  [data-page="admin-system-opkg"] div.btn {
- 	display: inline;
- 	padding: 0.3rem 0.6rem;
+	padding: 0.3rem 0.9rem;
+	min-height: 2.3rem;
  }
 
  [data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
@@ -2661,6 +2671,25 @@ body.lang_zh_TW {
  [data-page="admin-system-opkg"] #maincontent>.container {
  	margin: 2rem 2rem 1rem;
  }
+
+[data-page="admin-system-opkg"] #packages {
+	border-radius: 14px;
+	overflow: hidden;
+	background-color: rgba(16, 28, 45, 0.58);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+[data-page="admin-system-opkg"] #packages>.tr>.td,
+[data-page="admin-system-opkg"] #packages tbody tr>td {
+	background-color: rgba(34, 34, 53, 0.46);
+	border-top: thin solid rgba(255, 255, 255, 0.08);
+}
+
+[data-page="admin-system-opkg"] #packages>.tr.table-titles>.th,
+[data-page="admin-system-opkg"] #packages thead tr>th {
+	background-color: rgba(12, 22, 38, 0.82);
+}
 
  .td.version,
  .td.size {
