@@ -7,6 +7,7 @@ config theme 'theme'
 config navbar
 	option name 'Overview'
 	option enable 'Enable'
+	option line '1'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/overview.png'
 	option address '/cgi-bin/luci/admin/status/overview'
@@ -14,6 +15,7 @@ config navbar
 config navbar
 	option name 'Terminal'
 	option enable 'Enable'
+	option line '2'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/terminal.png'
 	option address '/cgi-bin/luci/admin/services/ttyd'
@@ -21,6 +23,7 @@ config navbar
 config navbar
 	option name 'Open Clash'
 	option enable 'Enable'
+	option line '3'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/openclash.png'
 	option address '/cgi-bin/luci/admin/services/openclash'
@@ -28,6 +31,7 @@ config navbar
 config navbar
 	option name 'Neko'
 	option enable 'Enable'
+	option line '4'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/neko.png'
 	option address '/cgi-bin/luci/admin/services/neko'
@@ -35,6 +39,7 @@ config navbar
 config navbar
 	option name 'Modem'
 	option enable 'Enable'
+	option line '5'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/modem.png'
 	option address '/cgi-bin/luci/admin/modem/main'
@@ -42,6 +47,7 @@ config navbar
 config navbar
 	option name 'Network'
 	option enable 'Enable'
+	option line '6'
 	option newtab 'No'
 	option icon '/www/luci-static/alpha/gaya/icon/navbar/network.png'
 	option address '/cgi-bin/luci/admin/network/network'
