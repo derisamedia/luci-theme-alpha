@@ -9,7 +9,7 @@
 [paypal]: https://www.paypal.com/paypalme/derisamedia
 [paypal-badge]: https://img.shields.io/badge/Donate-Paypal_me-blue
 [new-release]: https://github.com/derisamedia/luci-theme-Arwi
-[new-release-badge]: https://img.shields.io/badge/New_Release-luci-theme-Arwi-red
+[new-release-badge]: https://img.shields.io/badge/New_Release-luci theme Arwi-red
 
 
 
